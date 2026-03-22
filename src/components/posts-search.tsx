@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Separator } from "@/components/ui/separator"
 import { parseSearchQuery } from "@/lib/utils"
 import { getUrlToPostById } from "@/lib/supabase"
 
@@ -44,7 +45,7 @@ export function PostsSearch() {
           <div className="relative grow">
             <Search className="absolute top-1/2 left-2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              className="h-8 truncate px-8"
+              className="truncate px-9"
               placeholder="Поиск..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
@@ -54,7 +55,7 @@ export function PostsSearch() {
               <button
                 type="button"
                 title="Очистить"
-                className="absolute top-1/2 right-0 inline-flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded transition-colors hover:text-muted-foreground"
+                className="absolute top-1/2 right-0 inline-flex h-9 w-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded transition-colors hover:text-muted-foreground"
                 onClick={clearSearch}
               >
                 <X className="h-4 w-4" />
@@ -62,7 +63,7 @@ export function PostsSearch() {
             )}
           </div>
           <Button
-            className="h-8 cursor-pointer px-2 lg:px-6"
+            className="cursor-pointer px-2 lg:px-6"
             onClick={handleRunSearch}
           >
             <Search className="lg:hidden" />
@@ -88,8 +89,7 @@ export function PostsSearch() {
           </div>
         )}
       </div>
-
-      <hr className="mt-2 mb-4 border-muted" />
+      <Separator className="mt-2 mb-4" />
 
       <div className="space-y-4">
         {items.length === 0 && !isLoading && !isSearchEmpty && (
@@ -124,15 +124,15 @@ export function PostsSearch() {
         <div ref={ref}>
           {isLoading && (
             <div className="flex flex-col items-center justify-center gap-3">
-              <Skeleton className="h-16 w-full"></Skeleton>
-              <Skeleton className="h-16 w-full"></Skeleton>
-              <Skeleton className="h-16 w-full"></Skeleton>
+              <Skeleton className="h-16 w-full rounded-lg"></Skeleton>
+              <Skeleton className="h-16 w-full rounded-lg"></Skeleton>
+              <Skeleton className="h-16 w-full rounded-lg"></Skeleton>
             </div>
           )}
           {!hasMore && items.length > 0 && (
             <Button
               type="button"
-              className="mx-auto flex h-8 cursor-pointer px-6"
+              className="mx-auto flex cursor-pointer px-6"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               Наверх
