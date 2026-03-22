@@ -6,7 +6,7 @@ export default function App() {
   return (
     <main className="container mx-auto flex p-4">
       <Tabs defaultValue="comments" className="w-full">
-        <TabsList className="grid w-64 grid-cols-2">
+        <TabsList className="grid w-full grid-cols-2 lg:w-64">
           <TabsTrigger value="comments">Комментарии</TabsTrigger>
           <TabsTrigger value="posts">Посты</TabsTrigger>
         </TabsList>

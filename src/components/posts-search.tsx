@@ -61,8 +61,12 @@ export function PostsSearch() {
               </button>
             )}
           </div>
-          <Button className="h-8 cursor-pointer px-6" onClick={handleRunSearch}>
-            Поиск
+          <Button
+            className="h-8 cursor-pointer px-2 lg:px-6"
+            onClick={handleRunSearch}
+          >
+            <Search className="lg:hidden" />
+            <span className="hidden lg:inline">Поиск</span>
           </Button>
         </div>
 
@@ -97,7 +101,7 @@ export function PostsSearch() {
         {items.map((post, index) => (
           <Card key={`${post.id}-${index}`} className="p-2">
             <CardContent className="space-y-1 px-0">
-              <div className="flex flex-row items-end gap-2">
+              <div className="flex flex-row flex-wrap items-end gap-2">
                 <Badge asChild>
                   <a href={getUrlToPostById(post.id)} target="_blank">
                     <span className="text-primary-foreground/80">id:</span>
