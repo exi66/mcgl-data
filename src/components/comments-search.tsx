@@ -63,7 +63,7 @@ export function CommentsSearch() {
             )}
           </div>
           <Button
-            className="cursor-pointer px-2 lg:px-6"
+            className="cursor-pointer px-2.25 lg:px-6"
             onClick={handleRunSearch}
           >
             <Search className="lg:hidden" />
