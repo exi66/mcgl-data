@@ -1,0 +1,6 @@
+allowBuilds:
+  esbuild: true
+  msw: true
+packages:
+  - "packages/*"
+  - "apps/*"
