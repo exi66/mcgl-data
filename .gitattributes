@@ -1,0 +1,2 @@
+# Prettier проверяет LF (endOfLine: lf): на Windows git тоже должен отдавать LF
+* text=auto eol=lf
