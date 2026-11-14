@@ -84,7 +84,11 @@ export function ForumPostFrame({ html, title }: ForumPostFrameProps) {
 
   // Сколько места пост занимает в вёрстке и какой высоты iframe
   const layoutHeight = isCollapsed ? COLLAPSED_HEIGHT : contentHeight
-  const frameHeight = Math.max(layoutHeight, overlay)
+  // В свёрнутом посте тултип обрезается вместе с остальным содержимым,
+  // в развёрнутом — рисуется поверх соседних карточек
+  const frameHeight = isCollapsed
+    ? layoutHeight
+    : Math.max(layoutHeight, overlay)
   const isOverlaying = frameHeight > layoutHeight
 
   const collapse = () => {
