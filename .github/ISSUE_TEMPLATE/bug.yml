@@ -1,0 +1,30 @@
+name: Ошибка
+description: Что-то работает или выглядит не так
+labels: ['bug']
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: Что случилось
+      description: Что вы делали и что пошло не так.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Как должно быть
+  - type: input
+    id: link
+    attributes:
+      label: Ссылка
+      description: Адрес страницы, на которой ошибка повторяется.
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Скриншоты и файлы
+      description: Перетащите сюда скриншоты или файлы (можно упаковать в .zip).
+  - type: input
+    id: browser
+    attributes:
+      label: Браузер и устройство
+      placeholder: Chrome 140 на Windows, Safari на iPhone…

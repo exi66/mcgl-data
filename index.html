@@ -2,12 +2,35 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/src/main.tsx"></script>
-    <title>mcgl-data</title>
+    <link rel="icon" href="./favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./favicon.png" />
+    <title>%VITE_SITE_TITLE%</title>
+    <meta name="description" content="%VITE_SITE_DESCRIPTION%" />
+
+    <!-- Link previews (forum, Discord, Telegram, VK): values come from .env -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="exi.moe" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:url" content="%VITE_SITE_URL%" />
+    <meta property="og:title" content="%VITE_SITE_TITLE%" />
+    <meta property="og:description" content="%VITE_SITE_DESCRIPTION%" />
+    <meta property="og:image" content="%VITE_SITE_URL%og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Sets the theme class before the first paint (no light flash). Same key and values as ThemeProvider.
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.classList.add(t);
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,40 +1,26 @@
-export const FORUM_URL = "https://forum.minecraft-galaxy.ru/"
+export const FORUM_URL = 'https://forum.minecraft-galaxy.ru/';
 
 /**
  * CORS-прокси для запросов тултипов (/object/<id>/<type>), см.
  * mcgl-data-api/forum-proxy. Без него тултипы игроков и предметов отключены.
  */
-const FORUM_PROXY_URL = (
-  (import.meta.env.VITE_FORUM_PROXY_URL as string | undefined) ?? ""
-).replace(/\/+$/, "")
+const FORUM_PROXY_URL = ((import.meta.env.VITE_FORUM_PROXY_URL as string | undefined) ?? '').replace(/\/+$/, '');
 
-export const FRAME_SIZE_MESSAGE = "mcgl-post-size"
+export const FRAME_SIZE_MESSAGE = 'mcgl-post-size';
 
 export interface FrameSizeMessage {
-  type: typeof FRAME_SIZE_MESSAGE
+  type: typeof FRAME_SIZE_MESSAGE;
   /** Высота содержимого поста */
-  height: number
+  height: number;
   /** Нижняя граница видимого тултипа; 0, если тултипов нет */
-  overlay: number
+  overlay: number;
 }
 
-const STYLES = [
-  "style.css?v=10",
-  "red.css?v=5",
-  "adaptive.css?v=3",
-  "map/map.css",
-  "js/jquery-ui.css",
-]
+const STYLES = ['style.css?v=10', 'red.css?v=5', 'adaptive.css?v=3', 'map/map.css', 'js/jquery-ui.css'];
 
 // script.js содержит обработчики из разметки постов: спойлеры (switchTable),
 // подсказки (showtip/hidetip), превью (show_preview), карту (show_map)
-const SCRIPTS = [
-  "js/jquery.min.js",
-  "js/jquery-ui.min.js",
-  "script.js?v=9",
-  "map/script.js",
-  "js/highlight.pack.js",
-]
+const SCRIPTS = ['js/jquery.min.js', 'js/jquery-ui.min.js', 'script.js?v=9', 'map/script.js', 'js/highlight.pack.js'];
 
 // Сбрасываем фон и высоту страницы форума, чтобы iframe подстраивался под пост
 const RESET_CSS = `
@@ -45,7 +31,7 @@ html { overflow: hidden; }
 #mcgl-root .posts { margin: 0; }
 img { max-width: 100%; height: auto; }
 .tooltip { z-index: 10; }
-`
+`;
 
 // В sandbox без allow-same-origin обращение к document.cookie бросает
 // SecurityError, а скрипты форума (карта и др.) читают и пишут куки.
@@ -72,7 +58,7 @@ const COOKIE_SHIM = `
     });
   } catch (e) {}
 })();
-`
+`;
 
 // Сообщает родителю размеры: из sandbox без allow-same-origin родитель
 // не может прочитать их сам. overlay — низ видимого тултипа (position: fixed),
@@ -125,7 +111,7 @@ const SIZE_REPORTER = `
   window.addEventListener("load", schedule);
   send();
 })();
-`
+`;
 
 // Форум не отдаёт CORS-заголовки, поэтому XHR тултипов идут через прокси
 const PATCH_SCRIPTS = `
@@ -145,15 +131,11 @@ const PATCH_SCRIPTS = `
   };
 })();
 try { if (window.hljs) hljs.initHighlighting(); } catch (e) {}
-`
+`;
 
 export function buildForumDocument(html: string): string {
-  const styles = STYLES.map(
-    (href) => `<link rel="stylesheet" href="${href}" />`
-  ).join("")
-  const scripts = SCRIPTS.map((src) => `<script src="${src}"></script>`).join(
-    ""
-  )
+  const styles = STYLES.map((href) => `<link rel="stylesheet" href="${href}" />`).join('');
+  const scripts = SCRIPTS.map((src) => `<script src="${src}"></script>`).join('');
 
   return `<!doctype html>
 <html lang="ru">
@@ -171,5 +153,5 @@ ${styles}
 ${scripts}
 <script>${PATCH_SCRIPTS}</script>
 </body>
-</html>`
+</html>`;
 }

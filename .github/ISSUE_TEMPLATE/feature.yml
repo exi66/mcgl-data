@@ -1,0 +1,15 @@
+name: Предложение
+description: Идея, как сделать удобнее
+labels: ['enhancement']
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Что хотелось бы
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Зачем
+      description: Какую задачу это решит.
