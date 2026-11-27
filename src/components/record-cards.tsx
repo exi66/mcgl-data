@@ -30,7 +30,7 @@ function MetaBadge({
       {href && <ExternalLink />}
     </>
   );
-  const className = cn('normal-case', primary && 'text-primary dark:text-brand-text-2');
+  const className = cn('text-foreground normal-case');
 
   if (!href) {
     return (
