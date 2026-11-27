@@ -15,12 +15,12 @@ const profileUrl = (userId: number) => new URL(`profilemain/${userId}`, FORUM_UR
 function MetaBadge({
   label,
   href,
-  primary,
+  _primary,
   children,
 }: {
   label: string;
   href?: string;
-  primary?: boolean;
+  _primary?: boolean;
   children: ReactNode;
 }) {
   const content = (
