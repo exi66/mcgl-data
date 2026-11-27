@@ -12,17 +12,7 @@ import type { ForumComment, ForumPost } from '@/types';
 const profileUrl = (userId: number) => new URL(`profilemain/${userId}`, FORUM_URL).toString();
 
 /** Поле записи: подпись — имя колонки в БД (как в ключах поиска), поэтому не переводится. */
-function MetaBadge({
-  label,
-  href,
-  _primary,
-  children,
-}: {
-  label: string;
-  href?: string;
-  _primary?: boolean;
-  children: ReactNode;
-}) {
+function MetaBadge({ label, href, children }: { label: string; href?: string; children: ReactNode }) {
   const content = (
     <>
       <span className="text-muted-foreground">{label}:</span>
@@ -74,7 +64,7 @@ export function CommentCard({ comment }: { comment: ForumComment }) {
     <RecordCard
       meta={
         <>
-          <MetaBadge label="id" href={getApiUrl('comments', comment.id)} primary>
+          <MetaBadge label="id" href={getApiUrl('comments', comment.id)}>
             {comment.id}
           </MetaBadge>
           <MetaBadge label="author" href={profileUrl(comment.author)}>
@@ -99,7 +89,7 @@ export function PostCard({ post }: { post: ForumPost }) {
     <RecordCard
       meta={
         <>
-          <MetaBadge label="id" href={getApiUrl('posts', post.id)} primary>
+          <MetaBadge label="id" href={getApiUrl('posts', post.id)}>
             {post.id}
           </MetaBadge>
           {post.created && <MetaBadge label="created">{formatDate(post.created)}</MetaBadge>}
